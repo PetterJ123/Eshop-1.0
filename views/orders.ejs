@@ -1,0 +1,53 @@
+<%- include('partials/head'); %>
+
+<body>
+    <div class="flexboxCenter bg-green">
+        <header>
+            <h1>BuckStar</h1>
+            <%- include('partials/menu'); %>
+        </header>
+    </div>
+
+    <div class="flexboxCenter">
+        <article>
+            <table class="centerTable" id="orderTable">
+                <caption>Ordrar</caption>
+                <thead>
+                    <tr>
+                        <td>Ordernummer</td>
+                        <td>Kundnummer</td>
+                        <td>Namn</td>
+                        <td>Skapad</td>
+                        <td>Senast uppdaterad</td>
+                        <td>Produktrader</td>
+                        <td>Status</td>
+                        <td>Hantera</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (const row of res) { %>
+                    <tr>
+                        <td><%= row.ordernummer %></td>
+                        <td><%= row.kundnummer %></td>
+                        <td><%= row.namn %></td>
+                        <td><%= row.skapad %></td>
+                        <td><%= row.uppdaterad %></td>
+                        <td><%= row.produktrader %></td>
+                        <td><%= row.o_status %></td>
+                        <td>
+                            <button><a href="/eshop/customer/<%= row.kundnummer %>/ordered_products/<%= row.ordernummer %>">Visa</a></button>
+                            <form action="/eshop/customer/submit_order" method="POST" class="dispInline">
+                                <button value="<%= row.ordernummer %>" name="submitOrder"
+                                    class="c-green">Beställ</button>
+                            </form>
+                        </td>
+                    </tr>
+                    <% }; %>
+                </tbody>
+            </table>
+        </article>
+    </div>
+    <div class="footerCont" id="orderFooterCont">
+        <%- include('partials/footer') %>
+    </div>
+</body>

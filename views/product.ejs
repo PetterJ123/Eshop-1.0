@@ -1,0 +1,60 @@
+<%- include('partials/head'); %>
+
+<body>
+    <div class="flexboxCenter bg-green">
+        <header>
+            <h1>BuckStar</h1>
+            <%- include('partials/menu'); %>
+        </header>
+    </div>
+
+    <div class="flexboxCenter">
+        <article>
+            <table class="centerTable">
+                <caption>Produkter</caption>
+                <thead>
+                    <tr>
+                        <td>Produktnummer</td>
+                        <td>Namn</td>
+                        <td>Pris</td>
+                        <td>Kategori (ID)</td>
+                        <td>Lagerantal</td>
+                        <td>Ändra?</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (const row of res) { %>
+                    <tr>
+                        <td><%= row.produktnummer %></td>
+                        <td><%= row.namn %></td>
+                        <td><%= row.pris %> kr</td>
+                        <td><%= row.kategori_typ %> (<%= row.id %>)</td>
+                        <td><%= row.produktantal %></td>
+                        <td>
+                            <button><a href="product/<%= row.produktnummer %>">Visa</a></button>
+                            <button><a class="btnEdit" href="product/edit/<%= row.produktnummer %>">Redigera</a></button>
+                            <form action="/eshop/product/delete" method="POST" style="display: inline;"
+                                onsubmit="return confirm('Do you really want to delete this product? This can\'t be undone!');">
+                                <button class="btnDelete" value="<%= row.produktnummer %>" name="doit">Radera</button>
+                            </form>
+                        </td>
+                    </tr>
+                    <% }; %>
+                    <form method="POST">
+                        <tr>
+                            <td><input placeholder="Produktnummer" name="id" type="number"></td>
+                            <td><input placeholder="Namn" name="name" type="text"></td>
+                            <td><input placeholder="Pris" name="price" type="number"></td>
+                            <td><input placeholder="(ID)" name="cat_id" type="number"></td>
+                        </tr>
+                </tbody>
+            </table>
+            <br>
+            <button>Add</button>
+            </form>
+        </article>
+    </div>
+    <div class="footerCont">
+        <%- include('partials/footer') %>
+    </div>
+</body>

@@ -1,0 +1,40 @@
+<%- include('partials/head'); %>
+
+<body>
+    <div class="flexboxCenter bg-green">
+        <header>
+            <h1>BuckStar</h1>
+            <%- include('partials/menu'); %>
+        </header>
+    </div>
+
+    <div class="flexboxCenter">
+        <article>
+            <% for (let row of res) { %>
+            <h1><%= row.namn %></h1>
+            <div class="backCont fixWidth">
+                <button><a href="/eshop/products">Tillbaka</a></button>
+            </div>
+            <table class="centerTable">
+                <thead>
+                    <tr>
+                        <td>Produktnummer</td>
+                        <td>Namn</td>
+                        <td>Pris</td>
+                        <td>Kategori</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><%= row.produktnummer %></td>
+                        <td><%= row.namn %></td>
+                        <td><%= row.pris %></td>
+                        <td><%= row.kategori_typ %></td>
+                    </tr>
+                </tbody>
+                <% }; %>
+            </table>
+        </article>
+    </div>
+    <%- include('partials/footer'); %>
+</body>

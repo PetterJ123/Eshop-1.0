@@ -1,0 +1,62 @@
+<%- include('partials/head'); %>
+
+<body>
+    <div class="flexboxCenter bg-green">
+        <header>
+            <h1>BuckStar</h1>
+            <%- include('partials/menu'); %>
+        </header>
+    </div>
+    <div class="flexboxCenter">
+        <article>
+            <form action="/eshop/customer/create_order" method="POST">
+                <div class="backCont fixWidth">
+                    <button><a href="/eshop/customers">Tillbaka</a></button>
+                    <button value="<%= kundnum %>" name="cro" class="c-green">Skapa order</button>
+                </div>
+            </form>
+            <table class="centerTable">
+                <caption>Ordrar</caption>
+                <thead>
+                    <tr>
+                        <td>Ordernummer</td>
+                        <td>Kundnummer</td>
+                        <td>Namn</td>
+                        <td>Skapad</td>
+                        <td>Hantera</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (const row of res) { %>
+                        <% onum = row.ordernummer %>
+                    <tr>
+                        <td><%= row.ordernummer %></td>
+                        <td><%= row.kundnummer %></td>
+                        <td><%= row.namn %></td>
+                        <td><%= row.skapad %></td>
+                        <td><% if(onum == null) { %>
+                            <p style="color: red; text-decoration: underline;">Inga ordrar</p>
+                        <% } else { %>
+                            <form action="/eshop/customer/submit_order" method="POST" class="dispInline">
+                                <button value="<%= row.ordernummer %>" name="submitOrder"
+                                    class="c-green">Beställ</button>
+                            </form>
+                            <button><a
+                                    href="/eshop/customer/<%= row.kundnummer %>/customer_orders/<%= row.ordernummer %>/add">Lägg
+                                    till</a></button>
+                            <form action="/eshop/customer/delete_order" method="POST"
+                                onsubmit="return confirm(`<%= dmsg %>`);" class="dispInline">
+                                <button class="btnDelete" value="<%= row.ordernummer %>" name="delor">Radera</button>
+                            </form>
+                            <% }; %>
+                        </td>
+                    </tr>
+                    <% }; %>
+                </tbody>
+            </table>
+        </article>
+    </div>
+    <div class="footerCont">
+        <%- include('partials/footer') %>
+    </div>
+</body>

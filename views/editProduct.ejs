@@ -1,0 +1,35 @@
+<%- include('partials/head'); %>
+
+<body>
+    <div class="flexboxCenter bg-green">
+        <header>
+            <h1>BuckStar</h1>
+            <%- include('partials/menu'); %>
+        </header>
+    </div>
+
+    <div class="flexboxCenter">
+        <article>
+            <% res = res[0] %>
+            <h1><%= res.namn %></h1>
+            <div class="backCont">
+                <button><a href="/eshop/products">Tillbaka</a></button>
+            </div>
+            <form method="POST" action="/eshop/product/edit" id="editForm">
+                <label for="id">Produktnummer:</label>
+                <input name="id" type="text" readonly value="<%= res.produktnummer %>">
+
+                <label for="name">Namn:</label>
+                <input name="name" type="text" value="<%= res.namn %>">
+
+                <label for="price">Pris:</label>
+                <input name="price" type="number" value="<%= res.pris %>">
+
+                <label for="category">Kategori:</label>
+                <input name="category" type="number" value="<%= res.id %>">
+                <br><br>
+                <button class="c-blue" name="doit">Apply Changes</button>
+            </form>
+        </article>
+    </div>
+</body>

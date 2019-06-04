@@ -1,0 +1,181 @@
+* { font-family: "Comic Sans MS"; }
+
+.flexboxCenter {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.centerTable {
+    width: 90%;
+    margin: auto;
+}
+
+#orderTable {
+    width: 100%;
+}
+
+.bg-green {
+    background-color: green;
+}
+
+header {
+    text-align: center;
+    width: 100%;
+}
+
+h1 {
+    color: black;
+}
+
+nav {
+    width: 100%;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+.menuLink {
+    float: left;
+    margin: 10px;
+    padding: 10px;
+    text-decoration: none;
+    background-color: greenyellow;
+    color: black;
+}
+
+.menuLink:hover {
+    float: left;
+    margin: 10px;
+    padding: 10px;
+    color: black;
+    background-color: rgb(218, 255, 162);
+}
+
+body {
+    margin: 0px;
+}
+
+article {
+    text-align: center;
+    width: 80%;
+    margin-top: 100px;
+    margin-bottom: 15rem;
+}
+
+.backCont {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.fixWidth {
+    width: 90%;
+}
+
+table {
+    font-size: 16px;
+}
+
+#catTableCont {
+    display: flex;
+    justify-content: center;
+}
+
+#catTable {
+    width: 30%;
+}
+
+tr:nth-child(odd) {
+    background-color: #e4e4e4;
+}
+
+td {
+    line-height: 30px;
+}
+
+#editForm {
+    background-color: #e4e4e4;
+    padding: 20px;
+    width: 100%;
+}
+
+button > a {
+    color: blue;
+    text-decoration: none;
+}
+
+button > a:hover {
+    text-decoration: underline;
+}
+
+.btnEdit {
+    color: orange;
+}
+
+.btnDelete {
+    color: red;
+}
+
+.btnDelete:hover {
+    text-decoration: underline;
+}
+
+.dispInline {
+    display: inline;
+}
+
+.c-green {
+    color: green;
+}
+
+.c-green:hover {
+    text-decoration: underline;
+}
+
+.c-blue {
+    color: blue;
+}
+
+.c-blue:hover {
+    text-decoration: underline;
+}
+
+#orderArt {
+    width: 94%;
+}
+
+#orderTableCont {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border: 1px solid grey;
+    padding: 20px 5px;
+    width: 100%;
+    margin: auto;
+}
+
+#addProdForm {
+    width: 150px;
+}
+
+#orderFooterCont {
+    margin-top: 90px;
+}
+
+.footerCont {
+    display: flex;
+    align-items: flex-end;
+}
+
+footer {
+    background-color: green;
+    text-align: center;
+    width: 100%;
+    height: 5rem;
+    align-self: flex-end;
+}

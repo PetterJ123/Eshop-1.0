@@ -1,0 +1,43 @@
+<%- include('partials/head'); %>
+
+<body>
+    <div class="flexboxCenter bg-green">
+        <header>
+            <h1>BuckStar</h1>
+            <%- include('partials/menu'); %>
+        </header>
+    </div>
+
+    <div class="flexboxCenter">
+        <article>
+            <table class="centerTable">
+                <caption>Kunder</caption>
+                <thead>
+                    <tr>
+                        <td>Kundnummer</td>
+                        <td>Namn</td>
+                        <td>Adress</td>
+                        <td>Telefon</td>
+                        <td>Order</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (const row of res) { %>
+                    <tr>
+                        <td><%= row.kundnummer %></td>
+                        <td><%= row.namn %></td>
+                        <td><%= row.adress %></td>
+                        <td><%= row.telefonnummer %></td>
+                        <td>
+                            <button><a href="customer/<%= row.kundnummer %>/customer_orders">Visa</a></button>
+                        </td>
+                    </tr>
+                    <% }; %>
+                </tbody>
+            </table>
+        </article>
+    </div>
+    <div class="footerCont">
+        <%- include('partials/footer') %>
+    </div>
+</body>

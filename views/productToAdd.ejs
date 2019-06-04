@@ -1,0 +1,90 @@
+<%- include('partials/head'); %>
+
+<body>
+    <div class="flexboxCenter bg-green">
+        <header>
+            <h1>BuckStar</h1>
+            <%- include('partials/menu'); %>
+        </header>
+    </div>
+    <div class="flexboxCenter">
+        <article id="orderArt">
+            <div class="backCont">
+                <button><a href="/eshop/customer/<%= kundnum %>/customer_orders">Tillbaka</a></button>
+            </div>
+            <div id="orderTableCont">
+                <table>
+                    <caption>Produkter som kan läggas till:</caption>
+                    <thead>
+                        <tr>
+                            <td>Produktnummer</td>
+                            <td>Namn</td>
+                            <td>Pris</td>
+                            <td>Kategori</td>
+                            <td>Lagerantal</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for (const row of res) { %>
+                        <tr>
+                            <td><%= row.produktnummer %></td>
+                            <td><%= row.namn %></td>
+                            <td><%= row.pris %> kr</td>
+                            <td><%= row.kategori_typ %></td>
+                            <td><%= row.produktantal %></td>
+                        </tr>
+                        <% }; %>
+                    </tbody>
+                </table>
+                <i class="fas fa-chevron-right"></i>
+                <form action="/eshop/customer/add_to_order" method="POST" id="addProdForm">
+                    <div style="border: 1px solid grey;">
+                        <label for="ordnr">Order</label>
+                        <input name="ordnr" readonly value="<%= ordernum %>" />
+
+                        <label for="knr"> för kund</label>
+                        <input name="knr" readonly value="<%= kundnum %>" />
+
+                        <label for="produktnummer">Produktnummer:</label>
+                        <input name="prdnr" type="number" placeholder="0000" autofocus />
+
+                        <label for="antal">Antal:</label>
+                        <input name="count" type="number" min="0" step="1" placeholder="0" />
+
+                        <button type="submit" class="c-blue">Lägg till produkt</button>
+                    </div>
+                </form>
+                <i class="fas fa-chevron-right"></i>
+                <table>
+                    <caption>Kundkorg</caption>
+                    <thead>
+                        <tr>
+                            <td>Produktnummer</td>
+                            <td>Produktantal</td>
+                            <td>Hantera</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for (const row of ordnr) { %>
+                        <tr>
+                            <td><%= row.produkt_id %></td>
+                            <td><%= row.produktantal %></td>
+                            <form action="/eshop/customer/order/delete" method="POST">
+                                <td><button name="submitDel" class="btnDelete"
+                                        value="<%= row.produkt_id %>">Radera</button>
+                                </td>
+                            </form>
+                        </tr>
+                        <% }; %>
+                    </tbody>
+                </table>
+            </div>
+            <form action="/eshop/customer/submit_order" method="POST">
+                <button value="<%= ordernum %>" name="submitOrder" class="c-green">Beställ</button>
+            </form>
+        </article>
+    </div>
+    <div class="footerCont">
+        <%- include('partials/footer') %>
+    </div>
+</body>

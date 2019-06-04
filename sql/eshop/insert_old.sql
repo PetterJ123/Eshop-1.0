@@ -1,0 +1,48 @@
+DELETE FROM lager;
+DELETE FROM produktregister;
+DELETE FROM kategori;
+DELETE FROM kundregister;
+
+LOAD DATA LOCAL INFILE 'produktregister.csv'
+INTO TABLE produktregister
+CHARSET utf8mb4
+FIELDS
+    TERMINATED BY ','
+    ENCLOSED BY '"'
+LINES
+    TERMINATED BY '\n'
+IGNORE 1 LINES
+;
+
+LOAD DATA LOCAL INFILE 'lager.csv'
+INTO TABLE lager
+CHARSET utf8mb4
+FIELDS
+    TERMINATED BY ','
+    ENCLOSED BY '"'
+LINES
+    TERMINATED BY '\n'
+IGNORE 1 ROWS
+;
+
+LOAD DATA LOCAL INFILE 'kategori.csv'
+INTO TABLE kategori
+CHARSET utf8mb4
+FIELDS
+    TERMINATED BY ','
+    ENCLOSED BY '"'
+LINES
+    TERMINATED BY '\n'
+IGNORE 1 ROWS
+;
+
+LOAD DATA LOCAL INFILE 'kundregister.csv'
+INTO TABLE kundregister
+CHARSET utf8mb4
+FIELDS
+    TERMINATED BY ','
+    ENCLOSED BY '"'
+LINES
+    TERMINATED BY '\n'
+IGNORE 1 ROWS
+;
