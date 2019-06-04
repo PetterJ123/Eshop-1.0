@@ -1,3 +1,6 @@
+# File for Finder in MacOS
+.DS_Store
+
 # Logs
 logs
 *.log
